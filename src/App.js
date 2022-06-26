@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 //Nuestros components
 import ShowProvinces from './components/provinces/ShowProvinces';
@@ -18,7 +19,6 @@ import CreateTownship from './components/townships/CreateTownship';
 import EditTownship from './components/townships/EditTownship';
 import axios from 'axios';
 
-
 axios.defaults.baseURL = 'http://localhost:8000/';
 axios.interceptors.request.use(function (config) {
   const token = localStorage.getItem('token');
@@ -29,37 +29,37 @@ axios.interceptors.request.use(function (config) {
 function App() {
   return (
     <div className='mx-auto container text-center'>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Navigate replace to="/login" />} />
-            
-            <Route path='/dashboard' element={<Dashboard/>} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate replace to="/login" />} />
 
-            <Route path='/login' element={<Login/>} />
-            <Route path='/register' element={<Register/>} />
-
-            {/* <Route path='/login'>
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          
+          {/* Work */}
+          {/* <Route path='/login'>
               {localStorage.getItem('token') ? <Navigate replace to="/dashboard" /> : <Login/>}
             </Route>
-
+            
             <Route path='/register'>
-              {localStorage.getItem('token') ? <Navigate replace to="/dashboard" /> : <Register/>}
-            </Route> */}
+            {localStorage.getItem('token') ? <Navigate replace to="/dashboard" /> : <Register/>}
+          </Route> */}
 
-            <Route path='/provinces' element={<ShowProvinces/>} />
-            <Route path='/province/create' element={<CreateProvince/>} />
-            <Route path='/province/edit/:id' element={<EditProvince/>}/>
+          <Route path="/dashboard" element={<PrivateRoute Component={Dashboard} />} />
+          <Route path='/provinces' element={<PrivateRoute Component={ShowProvinces} />} />
+          <Route path='/province/create' element={<PrivateRoute Component={CreateProvince} />} />
+          <Route path='/province/edit/:id' element={<PrivateRoute Component={EditProvince} />} />
 
-            <Route path='/province/:id/districts' element={<ShowDistricts/>} />
-            <Route path='/district/create/:id' element={<CreateDistrict/>} />
-            <Route path='/district/edit/:id' element={<EditDistrict/>} />
+          <Route path='/province/:id/districts' element={<PrivateRoute Component={ShowDistricts} />} />
+          <Route path='/district/create/:id' element={<PrivateRoute Component={CreateDistrict} />} />
+          <Route path='/district/edit/:id' element={<PrivateRoute Component={EditDistrict} />} />
 
-            <Route path='/district/:id/townships' element={<ShowTownships/>} />
-            <Route path='/township/create/:id' element={<CreateTownship/>} />
-            <Route path='/township/edit/:id' element={<EditTownship/>} />
+          <Route path='/district/:id/townships' element={<PrivateRoute Component={ShowTownships} />} />
+          <Route path='/township/create/:id' element={<PrivateRoute Component={CreateTownship} />} />
+          <Route path='/township/edit/:id' element={<PrivateRoute Component={EditTownship} />} />
 
-          </Routes>
-        </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
