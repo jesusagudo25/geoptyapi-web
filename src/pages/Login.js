@@ -39,7 +39,7 @@ const Login = () => {
             <div className='container px-5 py-24 mx-auto'>
                 <h2 className='text-gray-900 text-xl mb-1 font-medium title-font'>Login</h2>
                 <form className='lg:w-1/2 md:w-4/5 bg-white flex flex-col w-full mx-auto' onSubmit={login}>
-                    <p className='leading-relaxed mb-5 text-gray-600'>Post-ironic portland shabby chic echo park, banjo fashion axe</p>
+                    <p className='leading-relaxed mb-5 text-gray-600'>Geopty API Login</p>
                     <div className='relative mb-4'>
                         <label htmlFor='email' className='leading-7 text-sm text-gray-600'>Email</label>
                         <input
@@ -66,7 +66,7 @@ const Login = () => {
                             <span>{errors.password} {message}</span>
                     </div>
                     <input type="submit" value="Login" className='text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg'></input>
-                    <p className='text-xs text-gray-500 mt-3'>Chicharrones blog helvetica normcore iceland tousled brook viral artisan.</p>
+                    <p className='text-xs text-gray-500 mt-3'>Don't have an account? <a href='/register' className='text-blue-500'>Register</a></p>
                 </form>
             </div>
         </section>

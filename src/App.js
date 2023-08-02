@@ -19,7 +19,7 @@ import CreateTownship from './components/townships/CreateTownship';
 import EditTownship from './components/townships/EditTownship';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8000/';
+axios.defaults.baseURL = 'http://localhost:8001/';
 axios.interceptors.request.use(function (config) {
   const token = localStorage.getItem('token');
   config.headers.Authorization = `Bearer ${token}`;
@@ -35,15 +35,6 @@ function App() {
 
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          
-          {/* Work */}
-          {/* <Route path='/login'>
-              {localStorage.getItem('token') ? <Navigate replace to="/dashboard" /> : <Login/>}
-            </Route>
-            
-            <Route path='/register'>
-            {localStorage.getItem('token') ? <Navigate replace to="/dashboard" /> : <Register/>}
-          </Route> */}
 
           <Route path="/dashboard" element={<PrivateRoute Component={Dashboard} />} />
           <Route path='/provinces' element={<PrivateRoute Component={ShowProvinces} />} />

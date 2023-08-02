@@ -14,25 +14,24 @@ const Dashboard = () => {
   }
 
   return (
-      <section>
-          <h2>Dashboard</h2>
+    <section>
+      <h2 className='text-gray-900 text-xl mb-1 font-medium title-font'>Dashboard</h2>
+      <div className='mb-5'>
+        <p>Hi, {localStorage.getItem('name')}</p>
+      </div>
+      <div className='grid grid-cols-2 gap-4'>
+        <div>
           <Link to="/provinces" className='flex w-1/2 text-white bg-blue-500 border-0 py-2 px-6 mx-auto focus:outline-none hover:bg-blue-600 rounded'>
             Provincias
           </Link>
+        </div>
+        <div>
           <button type='button' className='flex w-1/2 text-white bg-red-500 border-0 py-2 px-6 mx-auto focus:outline-none hover:bg-red-600 rounded' onClick={() => logout()}>Logout</button>
-          {/* 
-          
-          Creo que es bueno empezar por algo. De manera que la vayas trabajando poco a poco. Lo de los roles si es fundamental, pero lo demás poco a poco.
+        </div>
+      </div>
 
-          Inicialmente:
-          1. Autenticación (Inicio, registro, recuperar password)
-          2. Dashboard
-            2.1. (Editores) Administrar categorización -> Datos fundamentales
-            2.2. (Admin) Administrar categorización -> Datos fundamentes -> Administrar usuarios
-          3. Validación de formularios
-          4. 
-          */}
-      </section>
+
+    </section>
   )
 }
 
