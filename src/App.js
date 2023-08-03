@@ -2,6 +2,10 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 //Nuestros components
+import PublicProvinces from './components/public/PublicProvinces';
+import PublicDistricts from './components/public/PublicDistricts';
+import PublicTownships from './components/public/PublicTownships';
+
 import ShowProvinces from './components/provinces/ShowProvinces';
 import CreateProvince from './components/provinces/CreateProvince';
 import EditProvince from './components/provinces/EditProvince';
@@ -35,6 +39,10 @@ function App() {
 
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+
+          <Route path='/provinces/public' element={<PublicProvinces />} />
+          <Route path='/province/:id/districts/public' element={<PublicDistricts />} />
+          <Route path='/district/:id/townships/public' element={<PublicTownships />} />
 
           <Route path="/dashboard" element={<PrivateRoute Component={Dashboard} />} />
           <Route path='/provinces' element={<PrivateRoute Component={ShowProvinces} />} />
